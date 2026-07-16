@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Crear Aviso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="formularioAviso" (ngSubmit)="guardarAviso()">
+    <ion-item>
+      <ion-label position="floating">Título</ion-label>
+      <ion-input formControlName="titulo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea formControlName="descripcion"></ion-textarea>
+    </ion-item>
+
+    <!-- Botón de Cámara -->
+    <ion-button expand="block" (click)="sacarFoto()" class="ion-margin-top">
+      <ion-icon slot="start" name="camera"></ion-icon>
+      Tomar/Seleccionar Foto
+    </ion-button>
+
+    <!-- Previsualización de la foto -->
+    <div *ngIf="fotoActual" style="text-align: center; margin: 20px;">
+      <img [src]="fotoActual" style="max-width: 100%; height: auto; border-radius: 8px;">
+    </div>
+
+    <ion-button expand="block" type="submit" [disabled]="!formularioAviso.valid" class="ion-margin-top">
+      Guardar Aviso
+    </ion-button>
+  </form>
+</ion-content>
